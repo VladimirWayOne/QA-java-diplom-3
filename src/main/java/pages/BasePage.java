@@ -16,7 +16,7 @@ public class BasePage {
 
     // Локаторы элементов, применимые для любой страницы
     // Конструктор
-    private static final By CONSTRUCTOR_BUTTON = By.xpath(".//p[text()='Конструктор']");
+    private static final By goToConstructor = By.xpath(".//p[text()='Конструктор']");
     // Лента заказов Лента Заказов
     private static final By ORDERS_LIST_BUTTON = By.xpath(".//p[text()='Лента Заказов']");
     // Личный кабинет
@@ -42,6 +42,7 @@ public class BasePage {
     // Нажать на эелемент
     @Step("Нажать на эелемент, согласно локатору")
     public void click(By elementLocator) {
+        waitElementToBeClikcable(elementLocator);
         driver.findElement(elementLocator).click();
     }
 
@@ -49,7 +50,11 @@ public class BasePage {
     public void sendKeys(By elementLocator, String inputText) {
         driver.findElement(elementLocator).sendKeys(inputText);
     }
+    @Step("Переход в Конструктор")
+    public void clickConstructorButton() {
+        click(goToConstructor);
 
+    }
     @Step("Переход в личный кабинет")
     public void clickProfileManeButton() {
         click(PROFILE_MANE_BUTTON);
@@ -62,7 +67,7 @@ public class BasePage {
 
     // Явное ожидание кликабельности данного элемента
     @Step("Ожидание кликабельности элемента")
-    public void waitElementToBeClikcable(WebElement element) {
+    public void waitElementToBeClikcable(By element) {
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
@@ -79,5 +84,11 @@ public class BasePage {
     public void waitElementToBeVisible(By elementLocator) {
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.visibilityOfElementLocated(elementLocator));
+    }
+
+    @Step("Ожидание пока элемент не пропадет")
+    public void waitUntilNotVisibilityOfElementLocated(WebElement element) {
+        new WebDriverWait(driver, 5)
+                .until(ExpectedConditions.invisibilityOf(element));
     }
 }

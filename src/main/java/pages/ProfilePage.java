@@ -12,11 +12,6 @@ public class ProfilePage extends BasePage {
         super(driver);
     }
 
-    @Step("Нажать на кнопку Конструктор на странице личного кабинета")
-    public void clickConstructorButton() {
-        click(goToConstructor);
-
-    }
 
     @Step("Нажать на Лого на странице личного кабинета")
     public void clickOnLogo() {

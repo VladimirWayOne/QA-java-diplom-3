@@ -16,6 +16,7 @@ public class MainPage extends BasePage {
     private static final By makeOrderButton = By.xpath(".//button[text()='Оформить заказ']");
     private static final By menuSauce = By.xpath(".//span[text()='Соусы']");
     private static final By enterAccountButtonMain = By.xpath("//button[text()='Войти в аккаунт']");
+    private static final By loadingGif = By.className("Modal_modal__P3_V5");
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -29,7 +30,7 @@ public class MainPage extends BasePage {
 
     @Step("Нажать на кнопку логина")
     public LoginPage clickAccountButton() {
-        waitElementToBeClikcable(driver.findElement(enterAccountButtonMain));
+        waitUntilNotVisibilityOfElementLocated(driver.findElement(loadingGif));
         click(enterAccountButtonMain);
         return new LoginPage(driver);
     }

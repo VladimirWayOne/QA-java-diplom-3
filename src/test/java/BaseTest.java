@@ -65,8 +65,10 @@ public class BaseTest {
                 .path("accessToken")
                 .toString();
         driver = getWebDriver(getWebDriverName());
-        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+        driver.manage().window().maximize();
+
     }
 
     @After
