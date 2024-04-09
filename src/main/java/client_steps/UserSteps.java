@@ -2,8 +2,6 @@ package client_steps;
 
 import client.UserClient;
 import dto.CreateUserRequest;
-//import dto.LoginUserRequest;
-//import dto.UpdateUserRequest;
 import dto.LoginUserRequest;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
@@ -50,7 +48,6 @@ public class UserSteps {
 
     @Step("Удаление пользователя")
     public ValidatableResponse deleteUser(String accessToken) {
-//        String bearerToken = getUserToken(email, password);
         return userClient.deleteUser(accessToken)
                 .then();
     }

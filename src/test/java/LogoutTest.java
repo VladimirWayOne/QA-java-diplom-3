@@ -3,7 +3,6 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
 import pages.MainPage;
-import pages.PasswordRecoverPage;
 
 import static constants.Urls.LOGIN_PAGE_URL;
 
@@ -20,7 +19,7 @@ public class LogoutTest extends BaseTest {
                 .clickProfileButtonAuthorized()
                 .clickLogOutButton()
                 .waitUrlToBe(LOGIN_PAGE_URL);
-        Assert.assertEquals("Ожидается переход на страницу Логина", LOGIN_PAGE_URL, mainPage.getCurrentUrl());
+        Assert.assertEquals("Не выполнен переход на страницу Логина", LOGIN_PAGE_URL, mainPage.getCurrentUrl());
     }
 
 }

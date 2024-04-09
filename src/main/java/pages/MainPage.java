@@ -36,13 +36,13 @@ public class MainPage extends BasePage {
     }
 
     @Step("Нажать на кнопку Личный кабинет для авторизованного пользователя")
-    public ProfilePage  clickProfileButtonAuthorized() {
+    public ProfilePage clickProfileButtonAuthorized() {
         click(profileManeButton);
         return new ProfilePage(driver);
     }
 
     @Step("Нажать на кнопку Личный кабинет для неавторизованного пользователя")
-    public LoginPage  clickProfileButtonNotAuthorized() {
+    public LoginPage clickProfileButtonNotAuthorized() {
         click(profileManeButton);
         return new LoginPage(driver);
     }

@@ -2,9 +2,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
 import org.junit.Test;
-import pages.LoginPage;
 import pages.MainPage;
-import pages.ProfilePage;
 
 import static constants.Urls.*;
 
@@ -18,7 +16,7 @@ public class TransitionTest extends BaseTest {
         String actualUrl = mainPage.openMainPage()
                 .clickProfileButtonNotAuthorized()
                 .getCurrentUrl();
-        Assert.assertEquals("Ожидается переход на страницу Логина", LOGIN_PAGE_URL, actualUrl);
+        Assert.assertEquals("Не выполнен переход на страницу Логина", LOGIN_PAGE_URL, actualUrl);
     }
 
     @Test
@@ -32,7 +30,7 @@ public class TransitionTest extends BaseTest {
                 .clickLoginEnterButton()
                 .clickProfileButtonAuthorized()
                 .getCurrentUrl();
-        Assert.assertTrue("Ожидается переход на страницу Профиля пользователя",
+        Assert.assertTrue("Не выполнен переход на страницу Профиля пользователя",
                 PROFILE_URL.equalsIgnoreCase(actualUrl) || ACCOUNT_URL.equalsIgnoreCase(actualUrl));
     }
 
@@ -48,7 +46,7 @@ public class TransitionTest extends BaseTest {
                 .clickProfileButtonAuthorized()
                 .clickOnLogo()
                 .getCurrentUrl();
-        Assert.assertEquals("Ожидается переход на Главную страницу", BASE_URL, actualUrl);
+        Assert.assertEquals("Не выполнен переход на Главную страницу", BASE_URL, actualUrl);
     }
 
 }

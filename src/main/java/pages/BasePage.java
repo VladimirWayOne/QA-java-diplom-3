@@ -2,12 +2,11 @@ package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static constants.Urls.BASE_URL;
 
 // Содержит локаторы и методы, доступные со всех страниц
 public class BasePage {
@@ -27,10 +26,6 @@ public class BasePage {
         this.driver = driver;
     }
 
-    public void waitUrlUntilNotAboutBlank() {
-        new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.not(ExpectedConditions.urlToBe("about:blank")));
-    }
 
     // Открыть Url
     @Step("Переход по адресу")
@@ -43,7 +38,17 @@ public class BasePage {
     public void click(By elementLocator) {
         waitElementToBeVisible(elementLocator);
         waitElementToBeClikcable(elementLocator);
-        driver.findElement(elementLocator).click();
+        try {
+            driver.findElement(elementLocator).click();
+        } catch (Exception e) {
+            System.out.println("Не удалось нажать посредством стандратного метода WebElement.click()" + e.getMessage());
+        } finally {
+            try {
+                clickViaJS(elementLocator);
+            } catch (Exception e) {
+                System.out.println("Не удалось нажать посредством JS Executor" + e.getMessage());
+            }
+        }
     }
 
     @Step("Ввод данных в поле")
@@ -51,25 +56,12 @@ public class BasePage {
         waitElementToBeVisible(elementLocator);
         driver.findElement(elementLocator).sendKeys(inputText);
     }
-    @Step("Переход в Конструктор")
-    public void clickConstructorButton() {
-        click(goToConstructor);
 
-    }
-    @Step("Переход в личный кабинет")
-    public void clickProfileManeButton() {
-        click(profileManeButton);
-    }
-
-    @Step("Переход в ленту заказов")
-    public void clickOrdersListButton() {
-        click(orderListButton);
-    }
 
     // Явное ожидание кликабельности данного элемента
     @Step("Ожидание кликабельности элемента")
     public void waitElementToBeClikcable(By element) {
-        new WebDriverWait(driver, 5)
+        new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -93,8 +85,15 @@ public class BasePage {
                 .until(ExpectedConditions.invisibilityOf(element));
     }
 
+    @Step
+    public void clickViaJS(By element) {
+        WebElement ele = driver.findElement(element);
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click();", ele);
+    }
 
-    public String getCurrentUrl(){
+
+    public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
 }

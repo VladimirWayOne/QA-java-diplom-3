@@ -7,6 +7,8 @@
   например, ```123@ya.ru```. Минимальный пароль — шесть символов.
 - Ошибку для некорректного пароля.
 
+[RegistrationTest.java](src%2Ftest%2Fjava%2FRegistrationTest.java)
+[ErrorMessageTest.java](src%2Ftest%2Fjava%2FErrorMessageTest.java)
 ### Вход
 
 - вход по кнопке «Войти в аккаунт» на главной,
@@ -29,6 +31,7 @@
 
 - выход по кнопке «Выйти» в личном кабинете.
 
+[LogoutTest.java](src%2Ftest%2Fjava%2FLogoutTest.java)
 ### Раздел «Конструктор»
 
 Проверь, что работают переходы к разделам:
@@ -36,3 +39,5 @@
 * «Булки»,
 * «Соусы»,
 * «Начинки».
+
+[ConstructorTest.java](src%2Ftest%2Fjava%2FConstructorTest.java)

@@ -6,9 +6,10 @@ import org.openqa.selenium.WebDriver;
 
 import static constants.Urls.RECOVERY_PASSWORD_URL;
 
-public class PasswordRecoverPage extends BasePage{
+public class PasswordRecoverPage extends BasePage {
 
     private static final By enterButtonOnRecoverPage = By.xpath(".//a[text()='Войти']");
+
     public PasswordRecoverPage(WebDriver driver) {
         super(driver);
     }

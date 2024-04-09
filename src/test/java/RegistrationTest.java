@@ -14,7 +14,7 @@ import pages.RegistrationPage;
 
 import java.time.Duration;
 
-public class RegistrationTest extends BaseTest{
+public class RegistrationTest extends BaseTest {
     @Override
     @Before
     @Step("setUp")
@@ -27,6 +27,7 @@ public class RegistrationTest extends BaseTest{
         driver.manage().window().maximize();
 
     }
+
     @Test
     @DisplayName("Проверка регистрации на странице регистрации")
     @Description("Проверка, что после регистрации и входа под созданным аккаунтом на основной страницк отображается кнопка Оформить заказ")

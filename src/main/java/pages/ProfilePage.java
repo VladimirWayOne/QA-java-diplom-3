@@ -6,8 +6,8 @@ import org.openqa.selenium.WebDriver;
 
 public class ProfilePage extends BasePage {
     private static final By burgerLogo = By.xpath(".//div[@class='AppHeader_header__logo__2D0X2']");
-    private static final By goToConstructor = By.xpath(".//p[text()='Конструктор']"); // переход на главную страницу
     private static final By logOutButton = By.xpath(".//button[text()='Выход']");
+
     public ProfilePage(WebDriver driver) {
         super(driver);
     }

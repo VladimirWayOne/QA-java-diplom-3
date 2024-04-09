@@ -18,7 +18,8 @@ public class LoginTest extends BaseTest {
                 .clickLoginEnterButton();
         Assert.assertTrue(mainPage.isAuthorized());
     }
-//
+
+    //
     @Test
     @DisplayName("Проверка логина по кнопке Личный кабинет")
     @Description("Проверка, что основная страница отображается после входа (появляется кнопка Оформить заказ)")
