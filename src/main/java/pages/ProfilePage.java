@@ -14,12 +14,15 @@ public class ProfilePage extends BasePage {
 
 
     @Step("Нажать на Лого на странице личного кабинета")
-    public void clickOnLogo() {
+    public MainPage clickOnLogo() {
         click(burgerLogo);
+        return new MainPage(driver);
     }
 
     @Step("Нажать на кнопку Выход на странице личного кабинета")
-    public void clickLogOutButton() {
+    public LoginPage clickLogOutButton() {
         click(logOutButton);
+        return new LoginPage(driver);
+
     }
 }

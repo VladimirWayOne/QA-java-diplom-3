@@ -18,11 +18,10 @@ public class BasePage {
     // Конструктор
     private static final By goToConstructor = By.xpath(".//p[text()='Конструктор']");
     // Лента заказов Лента Заказов
-    private static final By ORDERS_LIST_BUTTON = By.xpath(".//p[text()='Лента Заказов']");
+    private static final By orderListButton = By.xpath(".//p[text()='Лента Заказов']");
     // Личный кабинет
-    private static final By PROFILE_MANE_BUTTON = By.xpath(".//p[text()='Личный Кабинет']");
-    // Лого Stellar Burgers
-   // private static final By PROFILE_MANE_BUTTON = By.xpath(".//p[text()='Личный Кабинет']");
+    private static final By profileManeButton = By.xpath(".//p[text()='Личный Кабинет']");
+
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -57,12 +56,12 @@ public class BasePage {
     }
     @Step("Переход в личный кабинет")
     public void clickProfileManeButton() {
-        click(PROFILE_MANE_BUTTON);
+        click(profileManeButton);
     }
 
     @Step("Переход в ленту заказов")
     public void clickOrdersListButton() {
-        click(ORDERS_LIST_BUTTON);
+        click(orderListButton);
     }
 
     // Явное ожидание кликабельности данного элемента
@@ -90,5 +89,10 @@ public class BasePage {
     public void waitUntilNotVisibilityOfElementLocated(WebElement element) {
         new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.invisibilityOf(element));
+    }
+
+
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
     }
 }

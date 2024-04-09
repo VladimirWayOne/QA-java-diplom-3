@@ -18,8 +18,9 @@ public class LoginPage extends BasePage {
     private static final By registerWrongPasswordMessageInLoginPage = By.xpath(".//p[text()='Некорректный пароль']");
 
     @Step("Открыть страницу Входа (Login)")
-    public void openLoginPage() {
+    public LoginPage openLoginPage() {
         openUrl(LOGIN_PAGE_URL);
+        return this;
     }
 
     @Step("Нажать на кнопку регистрации на странице Логина")

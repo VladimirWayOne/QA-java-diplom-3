@@ -20,9 +20,9 @@ public class RegistrationPage extends BasePage {
     public static By registerWrongPasswordMessageInRegisterPage = By.xpath(".//p[text()='Некорректный пароль']");
 
     @Step("Открыть страницу регистрации")
-    public void openRegistrationPage() {
+    public RegistrationPage openRegistrationPage() {
         openUrl(REGISTER_PAGE_URL);
-        //return this;
+        return this;
     }
 
     @Step("Ввести имя (Name) в странице регистрации")
@@ -44,13 +44,15 @@ public class RegistrationPage extends BasePage {
     }
 
     @Step("Нажать на кнопку Зарегистрироваться (Register) в странице регистрации")
-    public void clickRegistrationButton() {
+    public LoginPage clickRegistrationButton() {
         click(registrationButton);
+        return new LoginPage(driver);
     }
 
     @Step("Нажать на кнопку Вход в странице регистрации")
-    public void clickEnterButtonOnRegistrationPage() {
+    public LoginPage clickEnterButtonOnRegistrationPage() {
         click(enterButtonOnRegistrationPage);
+        return new LoginPage(driver);
     }
 
 }
