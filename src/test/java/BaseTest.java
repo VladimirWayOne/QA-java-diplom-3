@@ -24,7 +24,7 @@ public class BaseTest {
     WebDriver driver;
     UserSteps userSteps;
 
-    private String getWebDriverName() {
+    protected String getWebDriverName() {
         Properties driverPropertiesFile = new Properties();
         try {
             driverPropertiesFile.load(new FileReader("src/main/resources/browser.properties"));
@@ -35,7 +35,7 @@ public class BaseTest {
         }
     }
 
-    private WebDriver getWebDriver(String browserName) {
+    protected WebDriver getWebDriver(String browserName) {
         switch (browserName) {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
@@ -52,8 +52,9 @@ public class BaseTest {
         }
     }
 
+
     @Before
-    @Step("Precondition step")
+    @Step("setUp")
     public void setUp() {
         userSteps = new UserSteps(new UserClient());
         createUserRequest = User.generateNewRandomUser();
@@ -72,7 +73,7 @@ public class BaseTest {
     }
 
     @After
-    @Step("Delete test user and close browser")
+    @Step("Удалить пользователя и закрыть браузер")
     public void tearDown() {
         if (accessToken != null) {
             userSteps.deleteUser(accessToken);

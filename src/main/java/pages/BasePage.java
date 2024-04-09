@@ -41,12 +41,14 @@ public class BasePage {
     // Нажать на эелемент
     @Step("Нажать на эелемент, согласно локатору")
     public void click(By elementLocator) {
+        waitElementToBeVisible(elementLocator);
         waitElementToBeClikcable(elementLocator);
         driver.findElement(elementLocator).click();
     }
 
     @Step("Ввод данных в поле")
     public void sendKeys(By elementLocator, String inputText) {
+        waitElementToBeVisible(elementLocator);
         driver.findElement(elementLocator).sendKeys(inputText);
     }
     @Step("Переход в Конструктор")
@@ -71,11 +73,11 @@ public class BasePage {
                 .until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    // Явное ожидание перехода на URL главной страницы
-    @Step("Ожидание открытия основной страницы")
-    public void waitUrlToBe() {
+    // Явное ожидание перехода на URL
+    @Step("Ожидание перехода по адресу")
+    public void waitUrlToBe(String url) {
         new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.urlToBe(BASE_URL));
+                .until(ExpectedConditions.urlToBe(url));
     }
 
     // Явное ожидание отображения элемента с данным локатором

@@ -1,6 +1,7 @@
 package client;
 
 import dto.CreateUserRequest;
+import dto.LoginUserRequest;
 import io.restassured.response.Response;
 
 public class UserClient extends RestClient {
@@ -13,7 +14,12 @@ public class UserClient extends RestClient {
 
     }
 
-
+    public Response loginUser(LoginUserRequest loginUserRequest) {
+        return getDefaultRequestSpecification()
+                .body(loginUserRequest)
+                .when()
+                .post("api/auth/login");
+    }
 
     public Response deleteUser(String bearerToken) {
         return getDefaultRequestSpecification()

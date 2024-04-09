@@ -24,9 +24,9 @@ public class LoginPage extends BasePage {
     }
 
     @Step("Нажать на кнопку регистрации на странице Логина")
-    public LoginPage clickRegisterButtonLoginPage() {
+    public RegistrationPage clickRegisterButtonLoginPage() {
         click(registerButtonFromLogin);
-        return this;
+        return new RegistrationPage(driver);
     }
 
     @Step("Нажать на кнопку Вход на странице Логина")

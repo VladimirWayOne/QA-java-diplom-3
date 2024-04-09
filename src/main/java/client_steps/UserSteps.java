@@ -4,6 +4,7 @@ import client.UserClient;
 import dto.CreateUserRequest;
 //import dto.LoginUserRequest;
 //import dto.UpdateUserRequest;
+import dto.LoginUserRequest;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 
@@ -28,24 +29,24 @@ public class UserSteps {
     }
 
 
-//    @Step("Авторизация пользователя")
-//    public ValidatableResponse loginUser(String email, String password) {
-//        LoginUserRequest loginUserRequest = LoginUserRequest.builder()
-//                .email(email)
-//                .password(password)
-//                .build();
-//
-//        return userClient.loginUser(loginUserRequest)
-//                .then();
-//    }
-//
-//    @Step("Получение токена")
-//    public String getUserToken(String email, String password) {
-//        return loginUser(email, password)
-//                .extract()
-//                .path("accessToken");
-//
-//    }
+    @Step("Авторизация пользователя по API")
+    public ValidatableResponse loginUser(String email, String password) {
+        LoginUserRequest loginUserRequest = LoginUserRequest.builder()
+                .email(email)
+                .password(password)
+                .build();
+
+        return userClient.loginUser(loginUserRequest)
+                .then();
+    }
+
+    @Step("Получение токена")
+    public String getUserToken(String email, String password) {
+        return loginUser(email, password)
+                .extract()
+                .path("accessToken");
+
+    }
 
     @Step("Удаление пользователя")
     public ValidatableResponse deleteUser(String accessToken) {

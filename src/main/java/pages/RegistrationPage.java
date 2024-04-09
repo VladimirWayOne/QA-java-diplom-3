@@ -26,21 +26,24 @@ public class RegistrationPage extends BasePage {
     }
 
     @Step("Ввести имя (Name) в странице регистрации")
-    public void enterRegisterName(String name) {
+    public RegistrationPage enterRegisterName(String name) {
         click(registerName);
         sendKeys(registerName, name);
+        return this;
     }
 
     @Step("Ввести Email в странице регистрации")
-    public void enterRegisterEmail(String email) {
+    public RegistrationPage enterRegisterEmail(String email) {
         click(registerEmail);
         sendKeys(registerEmail, email);
+        return this;
     }
 
     @Step("Ввести пароль (Password) в странице регистрации")
-    public void enterRegisterPassword(String password) {
+    public RegistrationPage enterRegisterPassword(String password) {
         click(registerPassword);
         sendKeys(registerPassword, password);
+        return this;
     }
 
     @Step("Нажать на кнопку Зарегистрироваться (Register) в странице регистрации")
@@ -53,6 +56,15 @@ public class RegistrationPage extends BasePage {
     public LoginPage clickEnterButtonOnRegistrationPage() {
         click(enterButtonOnRegistrationPage);
         return new LoginPage(driver);
+    }
+
+    @Step("Заполнение полей для регистрации")
+    public RegistrationPage fillRegistrationFields(String name, String email, String password) {
+        enterRegisterName(name);
+        enterRegisterEmail(email);
+        enterRegisterPassword(password);
+        return this;
+
     }
 
 }

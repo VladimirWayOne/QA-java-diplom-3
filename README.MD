@@ -14,14 +14,17 @@
 - вход через кнопку в форме регистрации,
 - вход через кнопку в форме восстановления пароля.
 
+[LoginTest.java](src%2Ftest%2Fjava%2FLoginTest.java)
 ### Переход в личный кабинет
 
 - переход по клику на «Личный кабинет».
 
+[TransitionTest.java](src%2Ftest%2Fjava%2FTransitionTest.java)
 ### Переход из личного кабинета в конструктор
 
 - переход по клику на «Конструктор» и на логотип Stellar Burgers.
 
+[TransitionTest.java](src%2Ftest%2Fjava%2FTransitionTest.java)
 ### Выход из аккаунта
 
 - выход по кнопке «Выйти» в личном кабинете.

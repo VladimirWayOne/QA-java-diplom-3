@@ -38,7 +38,7 @@ public class TransitionTest extends BaseTest {
 
     @Test
     @DisplayName("Проверка перехода в личный кабинет для авторизированного пользователя с основной страницы")
-    @Description("Проверка, что осуществляется переход в личный профиль Пользователя")
+    @Description("Проверка, что осуществляется переход на Главную страницу")
     public void clickOnLogo() {
         MainPage mainPage = new MainPage(driver);
         String actualUrl = mainPage.openMainPage()
