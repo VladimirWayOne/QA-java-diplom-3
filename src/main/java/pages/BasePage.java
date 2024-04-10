@@ -42,11 +42,10 @@ public class BasePage {
             driver.findElement(elementLocator).click();
         } catch (Exception e) {
             System.out.println("Не удалось нажать посредством стандратного метода WebElement.click()" + e.getMessage());
-        } finally {
             try {
                 clickViaJS(elementLocator);
-            } catch (Exception e) {
-                System.out.println("Не удалось нажать посредством JS Executor" + e.getMessage());
+            } catch (Exception eJS) {
+                System.out.println("Не удалось нажать посредством JS Executor" + eJS.getMessage());
             }
         }
     }
