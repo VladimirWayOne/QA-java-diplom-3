@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: RegistrationTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.691 s - in RegistrationTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.407 s - in RegistrationTest

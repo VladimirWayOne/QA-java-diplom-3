@@ -53,7 +53,25 @@ public class BasePage {
     @Step("Ввод данных в поле")
     public void sendKeys(By elementLocator, String inputText) {
         waitElementToBeVisible(elementLocator);
-        driver.findElement(elementLocator).sendKeys(inputText);
+        WebElement nameHtmlElement = driver.findElement(elementLocator);
+        boolean isNameHtmlElementStale = ExpectedConditions.stalenessOf(nameHtmlElement).apply(driver);
+
+    // if the element is stale
+        if (isNameHtmlElementStale) {
+            // re-retrieving the desired input HTML element
+            nameHtmlElement = driver.findElement(elementLocator);
+        }
+
+        try {
+            nameHtmlElement.sendKeys(inputText);
+        } catch (Exception e) {
+            System.out.println("Не удалось ввести даные посредством стандратного метода WebElement.sendKeys()" + e.getMessage());
+            try {
+                sendKeysViaJS(elementLocator, inputText);
+            } catch (Exception eJS) {
+                System.out.println("Не ввести данные посредством JS Executor" + eJS.getMessage());
+            }
+        }
     }
 
 
@@ -84,11 +102,16 @@ public class BasePage {
                 .until(ExpectedConditions.invisibilityOf(element));
     }
 
-    @Step
     public void clickViaJS(By element) {
         WebElement ele = driver.findElement(element);
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", ele);
+    }
+
+    public void sendKeysViaJS(By elementLocator, String inputText) {
+        WebElement ele = driver.findElement(elementLocator);
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript(String.format("arguments[0].setAttribute('value', '%s')", inputText), ele);
     }
 
 
